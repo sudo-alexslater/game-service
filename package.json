@@ -1,0 +1,12 @@
+{
+	"name": "@alexslaterio/quoting-service-infra",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"postinstall": "cd core && npm i && cd ../infra && npm i && cd ../common && npm i"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}

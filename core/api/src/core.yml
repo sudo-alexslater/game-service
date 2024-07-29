@@ -1,0 +1,104 @@
+openapi: 3.0.3
+
+info:
+  title: Quoting API
+  description: API for generating AI quotes
+  version: 0.1.0
+servers:
+  - url: "https://quote.alexslater.io"
+    description: Production API endpoint for the quoting API
+
+paths:
+  /health:
+    get:
+      operationId: get-health
+      description: healthcheck endpoint
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${healthcheck_arn}/invocations"
+        httpMethod: "POST"
+        timeoutInMillis: ${lambda_identity_timeout}
+        type: "aws_proxy"
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-api-key-source: "HEADER"
+  /quote:
+    post:
+      operationId: post-quote
+      description: Post quote endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateQuoteRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${post_quote_arn}/invocations"
+        httpMethod: "POST"
+        timeoutInMillis: ${lambda_identity_timeout}
+        type: "aws_proxy"
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-api-key-source: "HEADER"
+  /quote/{quoteId}:
+    get:
+      operationId: get-quote
+      description: Get quote endpoint
+      parameters:
+        - name: quoteId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${get_quote_arn}/invocations"
+        httpMethod: "POST"
+        timeoutInMillis: ${lambda_identity_timeout}
+        type: "aws_proxy"
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-api-key-source: "HEADER"
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        message:
+          type: string
+    Quote:
+      type: object
+      properties:
+        quoteId:
+          type: string
+    CreateQuoteRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+  # securitySchemes:
+  #   ApiKeyAuth:
+  #     type: apiKey
+  #     name: x-api-key
+  #     in: header

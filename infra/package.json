@@ -1,0 +1,12 @@
+{
+	"name": "microservice-base-infra",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"deploy": "terraform apply -var-file='private.tfvars'"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}

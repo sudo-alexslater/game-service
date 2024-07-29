@@ -1,0 +1,27 @@
+{
+	"name": "@alexslaterio/common",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepack": "npm run build",
+		"build": "tsc",
+		"build:watch": "tsc --watch"
+	},
+	"devDependencies": {
+		"@types/jest": "^29.5.12",
+		"@types/node": "^20.14.12",
+		"jest": "^29.7.0",
+		"ts-jest": "^29.2.3",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3"
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.616.0",
+		"@aws-sdk/client-lambda": "^3.616.0",
+		"@aws-sdk/lib-dynamodb": "^3.616.0"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}
