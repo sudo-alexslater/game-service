@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "core" {
   name           = "${local.prefix}-api"
-  description    = "Quoting API"
+  description    = "Gaming API"
   api_key_source = "HEADER"
   body           = data.template_file.core_oas.rendered
 
@@ -14,8 +14,8 @@ data "template_file" "core_oas" {
 
   vars = {
     healthcheck_arn = "${module.healthcheck.arn}"
-    get_quote_arn   = "${module.get_quote.arn}"
-    post_quote_arn  = "${module.post_quote.arn}"
+    list_lobbies_arn   = "${module.list_lobbies.arn}"
+    create_lobby_arn  = "${module.create_lobby.arn}"
 
     aws_region              = var.aws_region
     lambda_identity_timeout = var.lambda_identity_timeout

@@ -13,7 +13,7 @@ variable "lambda_identity_timeout" {
 }
 
 locals {
-  service     = "quoting"
+  service     = "gaming"
   environment = terraform.workspace
   account_id  = local.account_id_lookup[local.environment]
   account_id_lookup = {

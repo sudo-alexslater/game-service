@@ -1,12 +1,12 @@
 openapi: 3.0.3
 
 info:
-  title: Quoting API
-  description: API for generating AI quotes
+  title: Gaming API
+  description: API for interacting with gaming APIs
   version: 0.1.0
 servers:
-  - url: "https://quote.alexslater.io"
-    description: Production API endpoint for the quoting API
+  - url: "https://gaming.alexslater.io"
+    description: Production API endpoint for the gaming API
 
 paths:
   /health:
@@ -29,51 +29,55 @@ paths:
       x-amazon-apigateway-auth:
         type: "NONE"
       x-amazon-apigateway-api-key-source: "HEADER"
-  /quote:
-    post:
-      operationId: post-quote
-      description: Post quote endpoint
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateQuoteRequest"
+  /lobbies:
+    get:
+      operationId: list-lobbies
+      description: List lobbies endpoint
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Quote"
+                $ref: "#/components/schemas/Lobbies"
 
       x-amazon-apigateway-integration:
-        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${post_quote_arn}/invocations"
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${list_lobbies_arn}/invocations"
         httpMethod: "POST"
         timeoutInMillis: ${lambda_identity_timeout}
         type: "aws_proxy"
       x-amazon-apigateway-auth:
         type: "NONE"
       x-amazon-apigateway-api-key-source: "HEADER"
-  /quote/{quoteId}:
-    get:
-      operationId: get-quote
-      description: Get quote endpoint
-      parameters:
-        - name: quoteId
-          in: path
-          required: true
-          schema:
-            type: string
+    post:
+      operationId: create-lobby
+      description: Create lobby endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLobbyRequest"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Quote"
+                $ref: "#/components/schemas/Lobby"
 
       x-amazon-apigateway-integration:
-        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${get_quote_arn}/invocations"
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${create_lobby_arn}/invocations"
         httpMethod: "POST"
         timeoutInMillis: ${lambda_identity_timeout}
         type: "aws_proxy"
@@ -87,18 +91,22 @@ components:
       properties:
         message:
           type: string
-    Quote:
+    Lobby:
       type: object
       properties:
-        quoteId:
+        lobbyId:
           type: string
-    CreateQuoteRequest:
+    Lobbies:
+      type: array
+      items:
+        $ref: "#/components/schemas/Lobby"
+    CreateLobbyRequest:
       type: object
       properties:
-        amount:
-          type: number
-  # securitySchemes:
-  #   ApiKeyAuth:
-  #     type: apiKey
-  #     name: x-api-key
-  #     in: header
+        maxPlayers:
+          type: integer
+        minPlayers:
+          type: integer
+        required:
+          - maxPlayers
+          - minPlayers
