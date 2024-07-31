@@ -1,8 +1,9 @@
+import { readdirSync } from "fs";
 import path from "path";
-import { getEntryPoints } from "./scripts/getEntryPoints";
 
-const dist = path.resolve(__dirname, "dist");
-const entryPoints = getEntryPoints();
+const outDir = path.resolve(__dirname, "dist/containers");
+const inDir = path.resolve(__dirname, "src/containers");
+const entryPoints = readdirSync(inDir).map((file) => path.resolve(inDir, file));
 
 module.exports = {
 	entry: entryPoints.reduce((acc, entryPoint) => {
@@ -29,7 +30,7 @@ module.exports = {
 		extensions: [".tsx", ".ts", ".js"],
 	},
 	output: {
-		path: dist,
+		path: outDir,
 		filename: "[name].js",
 		libraryTarget: "commonjs",
 		compareBeforeEmit: true,

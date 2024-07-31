@@ -10,12 +10,12 @@ resource "aws_api_gateway_rest_api" "core" {
 }
 
 data "template_file" "core_oas" {
-  template = file("${path.root}/../core/api/src/core.yml")
+  template = file("${path.root}/../core/api/core.yml")
 
   vars = {
-    healthcheck_arn = "${module.healthcheck.arn}"
-    list_lobbies_arn   = "${module.list_lobbies.arn}"
-    create_lobby_arn  = "${module.create_lobby.arn}"
+    healthcheck_arn  = "${module.healthcheck.arn}"
+    list_lobbies_arn = "${module.list_lobbies.arn}"
+    create_lobby_arn = "${module.create_lobby.arn}"
 
     aws_region              = var.aws_region
     lambda_identity_timeout = var.lambda_identity_timeout
