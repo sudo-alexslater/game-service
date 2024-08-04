@@ -8,6 +8,7 @@ ENV \
 
 EXPOSE ${PORT}
 
-COPY ./dist/containers/matchmaking.js ./index.js
+# copy current directory to /app
+COPY dist/matchmaking.js ./index.js
 
 CMD [ "node", "index.js"]

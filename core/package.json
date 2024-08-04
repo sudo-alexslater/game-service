@@ -5,8 +5,8 @@
 	"scripts": {
 		"test:unit": "jest --config jest.config.unit.ts",
 		"build:lambdas": "webpack --config webpack.lambdas.config.ts",
-		"build:containers": "webpack --config webpack.containers.config.ts",
-		"build": "npm run build:lambdas && npm run build:containers",
+		"build:matchmaking": "webpack --config webpack.matchmaking.config.ts",
+		"build": "npm run build:lambdas && npm run build:matchmaking",
 		"deploy:matchmaking": "docker build -t alexslaterio/game-service-matchmaking -f ./src/docker/matchmaking.dockerfile .",
 		"deploy:containers": "npm run deploy:matchmaking"
 	},

@@ -1,16 +1,11 @@
-import { readdirSync } from "fs";
 import path from "path";
 
-const outDir = path.resolve(__dirname, "dist/containers");
-const inDir = path.resolve(__dirname, "src/containers");
-const entryPoints = readdirSync(inDir).map((file) => path.resolve(inDir, file));
+const outDir = path.resolve(__dirname, "src/docker/matchmaking/dist");
 
 module.exports = {
-	entry: entryPoints.reduce((acc, entryPoint) => {
-		const fileName = path.basename(entryPoint, ".ts");
-		acc[fileName] = entryPoint;
-		return acc;
-	}, {} as Record<string, string>),
+	entry: {
+		matchmaking: "./src/containers/matchmaking.ts",
+	},
 	mode: "production",
 	module: {
 		rules: [
