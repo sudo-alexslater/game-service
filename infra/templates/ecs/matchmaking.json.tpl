@@ -1,5 +1,6 @@
 [
   {
+    "essential": true,
     "name": "${app_name}",
     "image": "${app_image}",
     "memory": ${fargate_memory},
@@ -8,7 +9,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/cb-app",
+          "awslogs-group": "${log_group_name}",
           "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }

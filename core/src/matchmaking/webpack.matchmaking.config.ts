@@ -1,10 +1,10 @@
 import path from "path";
 
-const outDir = path.resolve(__dirname, "src/docker/matchmaking/dist");
+const outDir = path.resolve(__dirname, "dist");
 
 module.exports = {
 	entry: {
-		matchmaking: "./src/containers/matchmaking.ts",
+		index: "./src/index.ts",
 	},
 	mode: "production",
 	module: {

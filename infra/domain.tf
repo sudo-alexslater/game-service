@@ -1,7 +1,9 @@
 locals {
-  domain_name = "alexslater.io"
-  subdomain   = "gaming"
-  full_domain = "${local.subdomain}.${local.domain_name}"
+  domain_name             = "alexslater.io"
+  subdomain               = "gaming"
+  full_domain             = "${local.subdomain}.${local.domain_name}"
+  matchmaking_subdomain   = "matchmaking"
+  matchmaking_full_domain = "${local.matchmaking_subdomain}.${local.domain_name}"
 }
 
 resource "aws_api_gateway_domain_name" "alexslaterio" {
@@ -20,7 +22,7 @@ module "acm" {
   source  = "terraform-aws-modules/acm/aws"
   version = "~> 4.0"
 
-  domain_name = local.full_domain
+  domain_name = "*.${local.domain_name}"
   zone_id     = data.cloudflare_zone.alexslaterio.id
 
   # subject_alternative_names = [
