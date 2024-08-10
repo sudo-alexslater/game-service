@@ -1,6 +1,6 @@
 import { IFeature } from "@alexslater-io/common";
+import { Lobby } from "@alexslater-io/matchmaking-api";
 import { LobbyService } from "../lib/services/LobbyService";
-import { Lobby } from "../lib/types/Lobby";
 
 export type ListLobbiesOptions = {};
 export class ListLobbies

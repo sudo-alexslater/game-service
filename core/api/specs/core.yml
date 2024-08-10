@@ -86,6 +86,8 @@ paths:
       x-amazon-apigateway-api-key-source: "HEADER"
 components:
   schemas:
+    ResourceId:
+      type: string
     Message:
       type: object
       properties:
@@ -94,8 +96,8 @@ components:
     Lobby:
       type: object
       properties:
-        lobbyId:
-          type: string
+        id:
+          $ref: "#/components/schemas/ResourceId"
     Lobbies:
       type: array
       items:

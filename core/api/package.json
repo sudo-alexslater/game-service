@@ -1,0 +1,23 @@
+{
+	"name": "@alexslater-io/matchmaking-api",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepack": "npm run build",
+		"build": "npm run build:spec && npm run generate:barrels && npm run compile",
+		"compile": "tsc",
+		"generate:barrels": "barrelsby --config barrelsby.config.json",
+		"build:spec": "npm run build:spec:core",
+		"build:spec:core": "swagger-typescript-api -p ./specs/core.yml --output build --name core"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"barrelsby": "^2.8.1",
+		"swagger-typescript-api": "^13.0.16",
+		"typescript": "^5.5.4"
+	}
+}

@@ -6,7 +6,8 @@
 		"test:unit": "jest --config jest.config.unit.ts",
 		"build:lambdas": "webpack --config webpack.lambdas.config.ts",
 		"build:matchmaking": "cd src/matchmaking && webpack --config webpack.matchmaking.config.ts",
-		"build": "npm run build:lambdas && npm run build:matchmaking",
+		"build:api": "cd api && npm run build",
+		"build": "npm run build:api && npm run build:lambdas && npm run build:matchmaking",
 		"deploy:matchmaking": "docker build -t alexslaterio/game-service-matchmaking -f ./src/docker/matchmaking.dockerfile .",
 		"deploy:containers": "npm run deploy:matchmaking"
 	},
@@ -35,6 +36,6 @@
 		"express": "^4.19.2"
 	},
 	"workspaces": [
-		"../common"
+		"./api"
 	]
 }

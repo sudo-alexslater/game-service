@@ -1,6 +1,6 @@
 import { DynamoProvider, generateResourceId } from "@alexslater-io/common";
+import { Lobby } from "@alexslater-io/matchmaking-api";
 import { PutCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
-import { Lobby } from "../types/Lobby";
 
 export class LobbyService {
 	private readonly lobbyTableName = process.env.LOBBY_TABLE_NAME;
