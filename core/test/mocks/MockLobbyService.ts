@@ -1,7 +1,7 @@
 import { generateResourceId, MockOf } from "@alexslater-io/common";
-import { Lobby } from "@alexslater-io/matchmaking-api";
 import { LobbyService } from "../../src/lib/services/LobbyService";
-export class MockLobbyService implements MockOf<LobbyService> {
+import { Lobby } from '../../src/lib/types/Lobby';
+\export class MockLobbyService implements MockOf<LobbyService> {
 	public reset(): void {
 		console.log("Resetting Mock Lobby Service");
 		this.mockedCreateResult = {

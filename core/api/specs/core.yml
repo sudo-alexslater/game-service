@@ -86,7 +86,7 @@ paths:
       x-amazon-apigateway-api-key-source: "HEADER"
 components:
   schemas:
-    ResourceId:
+    id:
       type: string
     Message:
       type: object
@@ -97,7 +97,7 @@ components:
       type: object
       properties:
         id:
-          $ref: "#/components/schemas/ResourceId"
+          $ref: "#/components/schemas/id"
     Lobbies:
       type: array
       items:
@@ -107,8 +107,7 @@ components:
       properties:
         maxPlayers:
           type: integer
+          required: true
         minPlayers:
           type: integer
-        required:
-          - maxPlayers
-          - minPlayers
+          required: true

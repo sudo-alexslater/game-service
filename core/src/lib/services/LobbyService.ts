@@ -1,15 +1,21 @@
 import { DynamoProvider, generateResourceId } from "@alexslater-io/common";
-import { Lobby } from "@alexslater-io/matchmaking-api";
 import { PutCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
+import { Lobby } from "../types/Lobby";
 
+export type LobbyOptions = {
+	minPlayers: number;
+	maxPlayers: number;
+};
 export class LobbyService {
 	private readonly lobbyTableName = process.env.LOBBY_TABLE_NAME;
 
 	constructor(private dbClient = DynamoProvider.instance) {}
 
-	public create(): Lobby {
+	public create({ minPlayers, maxPlayers }: LobbyOptions): Lobby {
 		return {
 			id: generateResourceId("gaming", "lobby"),
+			minPlayers,
+			maxPlayers,
 		};
 	}
 
