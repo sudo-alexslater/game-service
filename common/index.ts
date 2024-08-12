@@ -4,5 +4,6 @@
 
 export * from "./src/ai/AIModelTrainingService";
 export * from "./src/ai/tensorflow";
+export * from "./src/mocks/MockLobbyService";
 export * from "./src/services/LobbyService";
 export * from "./src/types/Lobby";

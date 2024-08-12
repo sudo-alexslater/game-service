@@ -1,5 +1,6 @@
 import { generateResourceId, MockOf } from "@alexslater-io/common";
-import { Lobby, LobbyService } from "@alexslater-io/game-service-common";
+import { LobbyService } from "../services/LobbyService";
+import { Lobby } from "../types/Lobby";
 
 export class MockLobbyService implements MockOf<LobbyService> {
 	constructor() {

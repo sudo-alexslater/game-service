@@ -1,7 +1,7 @@
+import { MockLobbyService } from "@alexslater-io/game-service-common";
 import { describe, expect, test } from "@jest/globals";
 import { beforeEach } from "node:test";
 import { ListLobbies } from "../../src/features/ListLobbies";
-import { MockLobbyService } from "../mocks/MockLobbyService";
 
 describe("List Lobbies", () => {
 	const lobbyService = new MockLobbyService();
