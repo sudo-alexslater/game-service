@@ -8,5 +8,11 @@
 	},
 	"author": "",
 	"license": "ISC",
-	"description": ""
+	"description": "",
+	"devDependencies": {
+		"@types/node": "^22.2.0"
+	},
+	"dependencies": {
+		"express": "^4.19.2"
+	}
 }

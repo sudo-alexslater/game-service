@@ -1,0 +1,30 @@
+{
+	"name": "@alexslater-io/matchmaking-container",
+	"version": "1.0.0",
+	"main": "./dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon src/matchmaking/src/index.js",
+		"deploy": "docker build -t alexslaterio/game-service-matchmaking -f ./src/docker/matchmaking.dockerfile .",
+		"compile": "tsc",
+		"build": "npm run build:deps && npm run compile",
+		"build:watch": "nodemon --exec 'npm run build' --watch src",
+		"build:deps": "proto-loader-gen-types --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=./src/protos ./src/protos/matchmaking.proto"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"workspaces": [
+		"../common"
+	],
+	"dependencies": {
+		"@grpc/grpc-js": "^1.11.1",
+		"@grpc/proto-loader": "^0.7.13",
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"nodemon": "^3.1.4",
+		"typescript": "^5.5.4"
+	}
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+package matchmaking;
+
+service Lobby {
+  rpc RegisterPlayer(RegisterPlayerRequest) returns (RegisterPlayerResponse) {}
+  rpc DeregisterPlayer(DeregisterPlayerRequest) returns (DeregisterPlayerResponse) {}
+}
+
+message RegisterPlayerRequest {
+  string player_id = 1;
+}
+message RegisterPlayerResponse {
+  bool success = 1;
+}
+message DeregisterPlayerRequest {
+  string player_id = 1;
+}
+message DeregisterPlayerResponse {
+  bool success = 1;
+}

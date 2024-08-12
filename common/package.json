@@ -1,0 +1,22 @@
+{
+	"name": "@alexslater-io/game-service-common",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"bundle": "barrelsby --config barrelsby.config.json",
+		"compile": "tsc",
+		"build": "npm run bundle && npm run compile"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"barrelsby": "^2.8.1",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"@alexslater-io/common": "^1.0.2",
+		"@aws-sdk/lib-dynamodb": "^3.624.0"
+	}
+}

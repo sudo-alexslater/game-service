@@ -7,7 +7,7 @@ ENV \
 
 EXPOSE ${PORT}
 
-# copy current directory to /app
-COPY dist/index.js ./index.js
+# copy dist to root
+COPY dist .
 
 CMD [ "node", "index.js"]

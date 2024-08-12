@@ -107,7 +107,8 @@ components:
       properties:
         maxPlayers:
           type: integer
-          required: true
         minPlayers:
           type: integer
-          required: true
+      required:
+        - maxPlayers
+        - minPlayers

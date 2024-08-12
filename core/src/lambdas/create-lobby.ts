@@ -1,4 +1,4 @@
-import { CreateLobbyRequest } from "@alexslater-io/matchmaking-api";
+import { CreateLobbyRequest } from "@alexslater-io/game-service-api";
 import { APIGatewayEvent } from "aws-lambda";
 import { CreateLobby } from "../features/CreateLobby";
 
