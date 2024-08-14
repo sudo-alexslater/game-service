@@ -24,7 +24,7 @@ const lobbyHandlers: LobbyHandlers = {
 	},
 };
 
-const packageDefinition = loadSync("./proto/example.proto");
+const packageDefinition = loadSync("./proto/matchmaking.proto");
 const proto = loadPackageDefinition(
 	packageDefinition
 ) as unknown as ProtoGrpcType;
