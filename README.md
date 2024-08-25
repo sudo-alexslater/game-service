@@ -1,4 +1,4 @@
-# Game Service
+# Gaming Service
 
 ## Prerequisites
 

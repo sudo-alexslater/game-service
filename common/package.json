@@ -1,5 +1,5 @@
 {
-	"name": "@alexslater-io/game-service-common",
+	"name": "@alexslater-io/gaming-service-common",
 	"version": "1.0.0",
 	"main": "dist/index.js",
 	"scripts": {

@@ -1,5 +1,5 @@
 import { IFeature } from "@alexslater-io/common";
-import { Lobby, LobbyService } from "@alexslater-io/game-service-common";
+import { Lobby, LobbyService } from "@alexslater-io/gaming-service-common";
 
 export type CreateLobbyOptions = {
 	minPlayers: number;

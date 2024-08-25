@@ -6,7 +6,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node dist/index.js",
 		"start:watch": "nodemon --exec npm run build --config ./nodemon.json ./dist/index.js",
-		"deploy": "docker build -t alexslaterio/game-service-matchmaking -f ./src/docker/matchmaking.dockerfile .",
+		"deploy": "docker build -t alexslaterio/gaming-service-matchmaking -f ./src/docker/matchmaking.dockerfile .",
 		"compile": "tsc",
 		"copy-files": "cp src/protos/matchmaking.proto dist/protos/matchmaking.proto",
 		"build": "npm run build:deps && npm run compile && npm run copy-files",

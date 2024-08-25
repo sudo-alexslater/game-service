@@ -1,4 +1,4 @@
-import { MockLobbyService } from "@alexslater-io/game-service-common";
+import { MockLobbyService } from "@alexslater-io/gaming-service-common";
 import { describe, expect, test } from "@jest/globals";
 import { beforeEach } from "node:test";
 import { ListLobbies } from "../../src/features/ListLobbies";
